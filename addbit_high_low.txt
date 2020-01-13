@@ -1,0 +1,51 @@
+;
+; program2lab1.asm
+;
+; Created: 1/13/2020 4:45:37 PM
+; Author : coc
+;
+
+
+; Replace with your application code
+.include"m328Pdef.inc"
+.def var_a0 = r16
+.def var_a1 = r17
+.def var_a2 = r18
+.def var_a3	= r19
+.def var_b0 = r20
+.def var_b1 = r21
+.def var_b2 = r22
+.def var_b3 = r23
+.def var_c0 = r24
+.def var_c1	= r25
+.def var_c2 = r26
+.def var_c3 = r27
+
+
+
+.cseg
+.org	0x00
+		rjmp main 
+main:	ldi var_b0,low(100000) ;b=500 =0X01F4
+		ldi var_b1,byte2(100000)
+		ldi var_b2,byte3(100000)
+		ldi var_b3,byte4(100000)
+
+		ldi var_c0,low(200000)
+		ldi var_c1,byte2(200000); C=1000
+		ldi var_c2,byte3(200000); C=1000
+		ldi var_c3,byte4(200000); C=1000
+	
+		movw var_a0,var_b0
+		movw var_a2,var_b2
+		add var_a0,var_c0
+		adc var_a1,var_c1
+		adc var_a2,var_c2
+		adc var_a3,var_c3
+		;movw var_ah:var_al,var_bh:var_bl
+		;mov var_al,var_bl
+		;mov var_ah,var_bh
+		
+
+end: rjmp end
+	
