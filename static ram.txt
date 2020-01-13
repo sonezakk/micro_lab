@@ -1,0 +1,75 @@
+;
+; shift.asm
+;
+; Created: 1/13/2020 5:16:27 PM
+; Author : coc
+;
+
+
+; Replace with your application code
+.include"m328Pdef.inc"
+
+.def var_al =r16
+.def var_ah =r17
+.def var_bl =r18
+.def var_bh =r19
+.def var_cl =r20
+.def var_ch =r21
+
+.cseg
+.org  0X00
+		rjmp main
+;
+; shift.asm
+;
+; Created: 1/13/2020 5:16:27 PM
+; Author : coc
+;
+
+
+; Replace with your application code
+.include"m328Pdef.inc"
+
+.def var_al =r16
+.def var_ah =r17
+.def var_bl =r18
+.def var_bh =r19
+.def var_cl =r20
+.def var_ch =r21
+
+.cseg
+.org  0X00
+		rjmp main
+
+main:	ldi var_al,0x70	;  a=0x1370, b=0x2010
+		ldi var_ah,0x13 
+		ldi var_bl,0x10
+		ldi var_bh,0x20
+
+		; c = a+b
+
+		movw var_cl,var_al  ; c=a
+		add var_cl,var_bl	; c=c+b
+		adc var_ch,var_bh
+	
+		ldi xl,low(var_a)			;0x08
+		ldi xh,high(var_a)			;0x01
+		st  x+,var_al
+		st  x+,var_ah
+		st  x+,var_bl
+		st  x+,var_bh
+		st	x+,var_cl
+		st	x+,var_ch
+		
+	end: rjmp end
+
+
+  .dseg
+  .org	0x108
+		var_a : .byte 2
+		var_b : .byte 2
+		var_c : .byte 2
+
+
+
+  
