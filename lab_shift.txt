@@ -1,0 +1,32 @@
+;
+; shift.asm
+;
+; Created: 1/13/2020 5:16:27 PM
+; Author : coc
+;
+
+
+; Replace with your application code
+.include"m328Pdef.inc"
+
+.def var_a =r16
+.def var_b =r17
+.def var_c =r18
+
+.cseg
+.org  0X00
+		rjmp main
+
+main:	ldi var_b,24
+		mov var_a,var_b
+		lsl var_a
+		lsl var_a
+		mov var_c,var_b
+		lsr var_c
+		lsr var_c
+		lsr var_c
+end: rjmp end
+
+
+  
+  
